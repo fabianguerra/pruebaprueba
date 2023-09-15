@@ -1,15 +1,15 @@
 import { FormProvider, useForm } from "react-hook-form";
 
-import { ProRequest } from "./Domain/proRequest";
-import { UserFormproduc } from "./Componentes/indexCompo";
+import { ProRequests } from "./Domain/proRequest";
+import { UserFormproduc } from "./Componentes/producForms";
 
 function ProducPage() {
-  const initialStateForm: ProRequest = {
+  const initialStateForm: ProRequests = {
     nombre: "",
-    descripcion: "",
+    descripcion: ""
   };
 
-  const methods = useForm<ProRequest>({
+  const methods = useForm<ProRequests>({
     defaultValues: initialStateForm,
     
   });

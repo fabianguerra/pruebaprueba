@@ -4,7 +4,7 @@ import "./App.css";
 import Contador from "./componente/Contador";
 import Datatable from "./componente/Pagina2";
 
-import ProducPage from "./componente/Producto/IndexProduc";
+import ProducPage from "./componente/Producto/producPage";
 import Pagina33 from "./componente/pag3";
 import UserPage from "./componente/Usuarios";
 export default function App() {
