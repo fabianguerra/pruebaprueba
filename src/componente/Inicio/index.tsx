@@ -9,6 +9,7 @@ function Inicio() {
         <Link to="/pagina2" className="mx-2">PAGINA2</Link>
         <Link to="/pagina3" className="mx-2">PAGINA3</Link>
         <Link to="/UserFormularioR" className="mx-2">UserFormulario</Link>
+        <Link to="/ProducFroms" className="mx-2">PRODUCTO</Link>
       </div>
 
       <div className="flex flex-col h-screen flex-1 overflow-auto duration-200 transition-colors relative ">
