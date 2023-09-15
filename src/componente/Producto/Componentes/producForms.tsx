@@ -2,18 +2,21 @@ import { FC, useState } from "react";
 import InputText from "../../InputText/Index";
 
 import { useFormContext } from "react-hook-form";
-import { ProRequests } from "../Domain/proRequest";
 
 import ModalComponent from "../modal/modal";
+import { ProductRequest } from "../Domain/proRequest";
+import axios from "axios";
 
-export const UserFormproduc: FC = () => {
-  const { getValues, reset } = useFormContext<ProRequests>();
+export const ProductForm: FC = () => {
 
-  const handleConsultar = () => {
-    const params: ProRequests = { ...getValues() };
-    console.log("Datos" + JSON.stringify(params));
-    alert(JSON.stringify(params));
+  const { getValues, reset } = useFormContext<ProductRequest>();
+  const handleConsultar = () => {};
+
+  const handleAgregar = async () => {
+    const params: ProductRequest = { ...getValues() };
+    await axios.post("http://localhost:3000/productos", {...params});
   };
+
 
   const handleReset = () => {
     reset();
@@ -28,7 +31,7 @@ export const UserFormproduc: FC = () => {
       {/* <InputText title="nombre:" name="nombre" />
       <InputText title="descripcion:" name="descripcion" /> */}
       <div className="lg:text-right flex md:text-center">
-        <button onClick={toggleModal}>Open Modal</button>
+        <button onClick={toggleModal}>Agregar producto</button>
 
         <button
           title="boton"
@@ -51,23 +54,25 @@ export const UserFormproduc: FC = () => {
         title={"Modal Static"}
       >
         <div className="grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center ">
+          <InputText  title="id:" name="id" />
+
           <InputText title="nombre:" name="nombre" />
           <InputText title="descripcion:" name="descripcion" />
-          
-        <button
-          title="boton"
-          className="border  rounded-xl p-2 m-2 bg-blue-400"
-          onClick={handleConsultar}
-        >
-          Agregar
-        </button>
-        <button
-          title="boton"
-          onClick={handleReset}
-          className="border  rounded-xl p-2 m-2 bg-blue-400 "
-        >
-          Limpiar
-        </button>
+
+          <button
+            title="boton"
+            className="border  rounded-xl p-2 m-2 bg-blue-400"
+            onClick={handleAgregar}
+          >
+            Agregar
+          </button>
+          <button
+            title="boton"
+            onClick={handleReset}
+            className="border  rounded-xl p-2 m-2 bg-blue-400 "
+          >
+            Limpiar
+          </button>
         </div>
       </ModalComponent>
     </div>

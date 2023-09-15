@@ -1,15 +1,17 @@
 import { FormProvider, useForm } from "react-hook-form";
 
-import { ProRequests } from "./Domain/proRequest";
-import { UserFormproduc } from "./Componentes/producForms";
+import { ProductForm } from "./Componentes/producForms";
+import { ProductList } from "./Componentes/productList";
+import { ProductRequest } from "./Domain/proRequest";
 
 function ProducPage() {
-  const initialStateForm: ProRequests = {
+  const initialStateForm: ProductRequest = {
+    id:0,
     nombre: "",
     descripcion: ""
   };
 
-  const methods = useForm<ProRequests>({
+  const methods = useForm<ProductRequest>({
     defaultValues: initialStateForm,
     
   });
@@ -19,7 +21,8 @@ function ProducPage() {
       <FormProvider {...methods}>
         <div className="border text-center p-2 gap-2 justify-start bg-white">
           PRODUCTO
-          <UserFormproduc />
+          <ProductForm />
+          <ProductList />
         </div>
       </FormProvider>
     </>
