@@ -1,60 +1,35 @@
-import { FC, useState } from "react";
-import InputText from "../../InputText/Index";
-
-import { useFormContext } from "react-hook-form";
-
-import ModalComponent from "../modal/modal";
-import { ProductRequest } from "../Domain/proRequest";
+import { FC } from "react";
 import axios from "axios";
+import useProducts from "../hooks/useProduct";
 
 export const ProductForm: FC = () => {
+  const { updateProductos } = useProducts();
 
-  const { getValues, reset } = useFormContext<ProductRequest>();
-  const handleConsultar = () => {};
-
-  const handleAgregar = async () => {
-    const params: ProductRequest = { ...getValues() };
-    await axios.post("http://localhost:3000/productos", {...params});
+  const obtenerDatos = async () => {
+    const respuesta = await axios.get("http://localhost:3000/productos");
+    updateProductos(respuesta.data);
   };
 
-
-  const handleReset = () => {
-    reset();
-  };
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleModal = () => {
-    setIsOpen(!isOpen);
-  };
   return (
     <div className="border  grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center  ">
       {/* <InputText title="nombre:" name="nombre" />
       <InputText title="descripcion:" name="descripcion" /> */}
       <div className="lg:text-right flex md:text-center">
-        <button onClick={toggleModal}>Agregar producto</button>
-
         <button
           title="boton"
           className="border  rounded-xl p-2 m-2 bg-blue-400"
-          onClick={handleConsultar}
+          onClick={obtenerDatos}
         >
           Consultar
         </button>
-        <button
-          title="boton"
-          onClick={handleReset}
-          className="border  rounded-xl p-2 m-2 bg-blue-400 "
-        >
-          Limpiar
-        </button>
       </div>
-      <ModalComponent
+      {/*  <ModalComponent
         isOpen={isOpen}
         onClose={toggleModal}
         title={"Modal Static"}
       >
         <div className="grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center ">
-          <InputText  title="id:" name="id" />
+          <InputText title="id:" name="id" />
 
           <InputText title="nombre:" name="nombre" />
           <InputText title="descripcion:" name="descripcion" />
@@ -74,7 +49,7 @@ export const ProductForm: FC = () => {
             Limpiar
           </button>
         </div>
-      </ModalComponent>
+      </ModalComponent> */}
     </div>
   );
 };

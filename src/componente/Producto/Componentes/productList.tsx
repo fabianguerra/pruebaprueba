@@ -1,9 +1,19 @@
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 import { ProductRequest } from "../Domain/proRequest";
+import ModalComponent from "../modal/modal";
+import InputText from "../../InputText/Index";
+import { useFormContext } from "react-hook-form";
+import useProducts from "../hooks/useProduct";
 
 export const ProductList: FC = () => {
-  const [productos, setProductos] = useState<ProductRequest[]>([]);
+  const { getValues } = useFormContext<ProductRequest>();
+  const { productos, setProductos } = useProducts();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
 
   const obtenerDatos = async () => {
     const respuesta = await axios.get("http://localhost:3000/productos");
@@ -14,8 +24,37 @@ export const ProductList: FC = () => {
     obtenerDatos();
   }, []);
 
+  const handleAgregar = async () => {
+    const params: ProductRequest = { ...getValues() };
+    await axios.post("http://localhost:3000/productos", { ...params });
+  };
+
+  const handlerDelete = (id: string) => {
+    const response = axios.delete("http://localhost:3000/productos/" + id);
+    console.log("Response" + response);
+  };
+
   return (
     <div className="mt-8 flex flex-col">
+      {/* EDITAR */}
+      <ModalComponent
+        isOpen={isOpen}
+        onClose={toggleModal}
+        title={"Modal Static"}
+      >
+        <div className="grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center ">
+          <InputText title="id:" name="id" />
+          <InputText title="nombre:" name="nombre" />
+          <InputText title="descripcion:" name="descripcion" />
+          <button
+            title="boton"
+            className="border  rounded-xl p-2 m-2 bg-blue-400"
+            onClick={handleAgregar}
+          >
+            Agregar
+          </button>
+        </div>
+      </ModalComponent>
       <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -36,7 +75,6 @@ export const ProductList: FC = () => {
                   </th>
                 </tr>
               </thead>
-
               <tbody className="divide-y divide-gray-200 bg-white">
                 {productos.map((e: ProductRequest, key: number) => (
                   <tr key={key}>
@@ -46,6 +84,46 @@ export const ProductList: FC = () => {
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       {e.descripcion}
                     </td>
+                    <button
+                      className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                      onClick={toggleModal}
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+                        />
+                      </svg>
+                    </button>
+
+                    <button
+                      className="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
+                      onClick={() => handlerDelete(e.id)}
+                    >
+                      {/* ELIMINAR */}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                        />
+                      </svg>
+                    </button>
                   </tr>
                 ))}
               </tbody>
