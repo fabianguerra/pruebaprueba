@@ -1,9 +1,4 @@
 {
-  "productos": [
-    {
-      "id": "1",
-      "nombre": "Galletas",
-      "descripcion": "Son unas galletas dulces"
-    }
-  ]
+  "productos": [],
+  "usuarios": []
 }

@@ -8,7 +8,7 @@ function Inicio() {
         <Link to="/contador" className="mx-2">contador</Link>
         <Link to="/pagina2" className="mx-2">PAGINA2</Link>
         
-        <Link to="/UserFormularioR" className="mx-2">UserFormulario</Link>
+        <Link to="/UserFormularioR" className="mx-2">USUARIOS</Link>
         <Link to="/ProducFroms" className="mx-2">PRODUCTO</Link>
       </div>
 

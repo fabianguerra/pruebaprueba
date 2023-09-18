@@ -6,7 +6,7 @@ import { ProductRequest } from "./Domain/proRequest";
 
 function ProducPage() {
   const initialStateForm: ProductRequest = {
-    id:0,
+    id:"",
     nombre: "",
     descripcion: ""
   };
