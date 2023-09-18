@@ -1,33 +1,21 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 import axios from "axios";
-
 import { UserRequest } from "../Domain/UserRequest";
-
 import ModalComponent from "../../Producto/modal/modal";
 import InputText from "../../InputText/Index";
 
+import UsuariosContext, { IUsuariosContext } from "../UsuariosProvider";
+
 export const UserList: FC = () => {
-  // const { getValues } = useFormContext<UserRequest>();
   const [isOpen, setIsOpen] = useState(false);
-  const [usuarios, setUsuarios] = useState<UserRequest[]>([]);
+
+  const { usuariosList } = useContext(UsuariosContext) as IUsuariosContext;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
-  const obtenerDatos = async () => {
-    const respuesta = await axios.get("http://localhost:3000/usuarios");
-    setUsuarios(respuesta.data);
-    debugger;
-  };
-
-  useEffect(() => {
-    obtenerDatos();
-  }, []);
-
   const handlerDelete = async (id: string) => {
-    debugger;
-
     const response = await axios.delete("http://localhost:3000/usuarios/" + id);
     console.log("Response" + response);
   };
@@ -74,14 +62,14 @@ export const UserList: FC = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
-                {usuarios.length > 0 ? (
-                  usuarios.map((e: UserRequest, key: number) => (
+                {usuariosList.length > 0 ? (
+                  usuariosList.map((e: UserRequest, key: number) => (
                     <tr key={key}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {e.Nombre}
+                        {e.nombre}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {e.Apellido}
+                        {e.apellido}
                       </td>
                       {/*ICONO EDITAR */}
                       <button
@@ -134,6 +122,9 @@ export const UserList: FC = () => {
               </tbody>
             </table>
           </div>
+{/* 
+          <NietoUsuario />
+          <HijoUsuario /> */}
         </div>
       </div>
     </div>

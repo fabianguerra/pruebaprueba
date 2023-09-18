@@ -1,12 +1,16 @@
-import { FC, useState } from "react";
+import { FC, useContext, useState } from "react";
 
 import { UserRequest } from "../Domain/UserRequest";
 import { useFormContext } from "react-hook-form";
 import ModalComponent from "../../Producto/modal/modal";
 import InputText from "../../InputText/Index";
 import axios from "axios";
+import UsuariosContext, { IUsuariosContext } from "../UsuariosProvider";
 
 export const UserForm: FC = () => {
+
+  const { searchUsuarios } = useContext(UsuariosContext) as IUsuariosContext;
+
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -14,6 +18,11 @@ export const UserForm: FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const handlerConsultar = () => {
+    searchUsuarios();
+  };
+
+  
   const { getValues } = useFormContext<UserRequest>();
 
   const handleAgregar = async () => {
@@ -24,6 +33,7 @@ export const UserForm: FC = () => {
   return (
     <div className="border grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center  ">
       {/* EDITAR */}
+
       <ModalComponent
         isOpen={isOpen}
         onClose={toggleModal}
@@ -47,6 +57,7 @@ export const UserForm: FC = () => {
         <button
           title="boton"
           className="border  rounded-xl p-2 m-2 bg-blue-400"
+          onClick={handlerConsultar}
         >
           Consultar
         </button>

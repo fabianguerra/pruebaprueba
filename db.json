@@ -1,4 +1,19 @@
 {
   "productos": [],
-  "usuarios": []
+  "usuarios": [
+    {
+      "id": "1",
+      "nombre": "Gregorio",
+      "apellido": "Avila"
+    },
+    {
+      "id": "2",
+      "nombre": "Fabian",
+      "apellido": "Guerra"
+    },{
+      "id": "3",
+      "nombre": "Fabiana",
+      "apellido": "Saltos"
+    }
+  ]
 }
