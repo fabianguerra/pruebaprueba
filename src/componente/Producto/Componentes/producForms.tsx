@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import InputText from "../../InputText/Index";
 
 import { useFormContext } from "react-hook-form";
@@ -8,15 +8,26 @@ import { ProductRequest } from "../Domain/proRequest";
 import axios from "axios";
 
 export const ProductForm: FC = () => {
-
   const { getValues, reset } = useFormContext<ProductRequest>();
-  const handleConsultar = () => {};
+  const [productos, setProductos] = useState<ProductRequest[]>([]);
+  // const obtenerDatos = () => {
+  //   const params: ProductRequest = { ...getValues() };
+  //   console.log("Datos" + JSON.stringify(params));
+  // };
+
+  const obtenerDatos = async () => {
+    const respuesta = await axios.get("http://localhost:3000/productos");
+    setProductos(respuesta.data);
+  };
+
+  useEffect(() => {
+    obtenerDatos();
+  }, []);
 
   const handleAgregar = async () => {
     const params: ProductRequest = { ...getValues() };
-    await axios.post("http://localhost:3000/productos", {...params});
+    await axios.post("http://localhost:3000/productos", { ...params });
   };
-
 
   const handleReset = () => {
     reset();
@@ -31,12 +42,14 @@ export const ProductForm: FC = () => {
       {/* <InputText title="nombre:" name="nombre" />
       <InputText title="descripcion:" name="descripcion" /> */}
       <div className="lg:text-right flex md:text-center">
-        <button onClick={toggleModal}>Agregar producto</button>
+        <button className="border p-1 px-4 rounded-lg" onClick={toggleModal}>
+          Agregar producto
+        </button>
 
         <button
           title="boton"
           className="border  rounded-xl p-2 m-2 bg-blue-400"
-          onClick={handleConsultar}
+          onClick={obtenerDatos}
         >
           Consultar
         </button>
@@ -54,7 +67,7 @@ export const ProductForm: FC = () => {
         title={"Modal Static"}
       >
         <div className="grid p-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-2 text-center ">
-          <InputText  title="id:" name="id" />
+          <InputText title="id:" name="id" />
 
           <InputText title="nombre:" name="nombre" />
           <InputText title="descripcion:" name="descripcion" />

@@ -4,7 +4,36 @@
       "id": "1",
       "nombre": "Galletas",
       "descripcion": "Son unas galletas dulces"
+    },
+    {
+      "id": "2",
+      "nombre": "asd",
+      "descripcion": "asd"
+    },
+    {
+      "id": "3",
+      "nombre": "ASDAS",
+      "descripcion": "ASD"
+    },
+    {
+      "id": "4",
+      "nombre": "ASDASD",
+      "descripcion": "ASDSA"
+    },
+    {
+      "id": "6",
+      "nombre": "12123",
+      "descripcion": "1231"
+    },
+    {
+      "id": "8",
+      "nombre": "ASDAS",
+      "descripcion": "SDAD"
+    },
+    {
+      "id": "9",
+      "nombre": "1111",
+      "descripcion": "SDAD111"
     }
-
   ]
 }
