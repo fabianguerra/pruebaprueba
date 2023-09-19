@@ -17,7 +17,7 @@ export const ProductForm: FC = () => {
       <div className="lg:text-right flex md:text-center">
         <button
           title="boton"
-          className="border  rounded-xl p-2 m-2 bg-blue-400"
+          className="border  rounded-xl p-2 m-2 bg-green-400"
           onClick={obtenerDatos}
         >
           Consultar

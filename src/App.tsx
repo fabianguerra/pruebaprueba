@@ -7,6 +7,8 @@ import Datatable from "./componente/Pagina2";
 import ProducPage from "./componente/Producto/producPage";
 import Pagina33 from "./componente/pag3";
 import UserPage from "./componente/Usuarios";
+import PokemonPage from "./componente/PokemonId";
+
 export default function App() {
   return (
     <Routes>
@@ -14,8 +16,9 @@ export default function App() {
         <Route path="/contador" element={<Contador />} />
         <Route path="/pagina2" element={<Datatable />} />
         <Route path="/pagina3" element={<Pagina33 />} />
-        <Route path="/UserFormularioR" element={<UserPage/>} />
-        <Route path="/ProducFroms" element={<ProducPage/>} />
+        <Route path="/Usuario" element={<UserPage />} />
+        <Route path="/ProducFroms" element={<ProducPage />} />
+        <Route path="/Pokemon" element={<PokemonPage />} />
       </Route>
     </Routes>
   );

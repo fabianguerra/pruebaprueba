@@ -1,5 +1,9 @@
 {
-  "productos": [],
+  "productos": [{
+    "id": "1",
+    "nombre": "Gregorio",
+    "apellido": "Avila"
+  }],
   "usuarios": [
     {
       "id": "1",

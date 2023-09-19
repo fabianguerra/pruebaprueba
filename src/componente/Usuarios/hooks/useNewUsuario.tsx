@@ -4,6 +4,8 @@ import axios from "axios";
 
 const useNewUsuarios = () => {
   const [usuarios, setUsuarios] = useState<UserRequest[]>([]);
+  //const [pokenon, setPokemon] = useState<PokemonResponse>();
+
 
   const getUsuarios = async () => {
     const respuesta = await axios.get("http://localhost:3000/usuarios");

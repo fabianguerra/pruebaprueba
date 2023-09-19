@@ -24,6 +24,7 @@ export const Usuarios: FC = () => {
       <div className="border text-center p-2 gap-2 justify-start bg-white">
         <UserForm />
         <UserList />
+        {/* PokemonCard */}
       </div>
     </FormProvider>
   );
