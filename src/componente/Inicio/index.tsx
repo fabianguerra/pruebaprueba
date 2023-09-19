@@ -3,16 +3,25 @@ import { Link } from "react-router-dom";
 function Inicio() {
   return (
     <div className="flex  relative">
-      <div className="bg-blue-700 w-auto grid grid-cols-1 h-screen">
+
+
+
+
+      <div className="bg-blue-700 w-40  grid grid-cols-1 h-screen">
         <Link to="/">Inicio</Link>
-        <Link to="/contador" className="mx-2">contador</Link>
-        <Link to="/pagina2" className="mx-2">PAGINA2</Link>
-        
-        <Link to="/UserFormularioR" className="mx-2">UserFormulario</Link>
-        <Link to="/ProducFroms" className="mx-2">PRODUCTO</Link>
+        <Link to="/usuarios">Usuarios</Link>
+        <Link to="/categorias">Categorias</Link>
+        <Link to="/productos">Productos</Link>
       </div>
 
+
+
+
+
+
       <div className="flex flex-col h-screen flex-1 overflow-auto duration-200 transition-colors relative ">
+
+
         <header className="h-16 bg-red-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +38,11 @@ function Inicio() {
             />
           </svg>
         </header>
-        <main className="h-screen overflow-y-auto bg-[#E4E9F7]   dark:bg-gray-900">
+
+
+
+
+        <main className="h-screen overflow-y-auto bg-[#E4E9F7]  ">
           <Outlet />
         </main>
       </div>
