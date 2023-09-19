@@ -10,7 +10,7 @@ const useGetPokemonId = () => {
   }, []);
 
   const getCharizard = async () => {
-    const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon/11");
+    const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon/6");
     const datainfo = respuesta.data;
     const {id, name,sprites, weight} = datainfo;
     const imagen = sprites.front_shiny;
