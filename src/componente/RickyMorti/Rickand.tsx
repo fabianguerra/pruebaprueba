@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { RickMortyPresent } from "./componente/RickMortyComponent";
-import InputText from "../InputText/Index";
+
 import { FormProvider, useForm } from "react-hook-form";
 
 import { RMRequest } from "./domain/RickMortyRequest";

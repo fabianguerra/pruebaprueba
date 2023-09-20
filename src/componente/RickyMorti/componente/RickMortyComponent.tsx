@@ -1,7 +1,7 @@
 import { FC, useContext } from "react";
 
 import RickandContext, { IRickMortyContext } from "../rickMortyPovider";
-import InputText from "../../InputText/Index";
+
 import { RickMortyForm } from "./rickMortyform";
 
 export const RickMortyPresent: FC = () => {
