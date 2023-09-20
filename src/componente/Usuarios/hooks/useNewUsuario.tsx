@@ -12,9 +12,14 @@ const useNewUsuarios = () => {
     setUsuarios(respuesta.data);
   }
 
+  const deleteUsuarios = async (id: string) => {
+    const response = await axios.delete("http://localhost:3000/usuarios/" + id);
+    console.log("Response" + response);
+  };
   return {
     usuarios,
-    getUsuarios
+    getUsuarios,
+    deleteUsuarios
   }
 
 };

@@ -8,6 +8,9 @@ function Inicio() {
         <Link to="/Pokemon" className="mx-2">
           POKEMON
         </Link>
+        <Link to="/RickMorty" className="mx-2">
+        RickMorty
+        </Link>
         <Link to="/contador" className="mx-2">
           CONTADOR
         </Link>

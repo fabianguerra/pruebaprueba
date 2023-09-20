@@ -9,15 +9,15 @@ import UsuariosContext, { IUsuariosContext } from "../UsuariosProvider";
 export const UserList: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { usuariosList } = useContext(UsuariosContext) as IUsuariosContext;
+  const { usuariosList,deleteU } = useContext(UsuariosContext) as IUsuariosContext;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   const handlerDelete = async (id: string) => {
-    const response = await axios.delete("http://localhost:3000/usuarios/" + id);
-    console.log("Response" + response);
+    console.log(id+"ID eliminar");
+    deleteU(id);
   };
 
   return (
