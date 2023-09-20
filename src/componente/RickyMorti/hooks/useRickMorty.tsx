@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { RMReponse } from "../domain/RickMortyRequest";
 import axios from "axios";
 
 const useGetRickMorty = () => {
   const [rickMortyhook, setrickmorty] = useState<RMReponse>();
 
-  useEffect(() => {
-    getpersonajeRM();
-  }, []);
-
-  const getpersonajeRM = async () => {
-    
+  const getpersonajeRM = async (idparam: string) => {
     const repuesta = await axios.get(
-      "https://rickandmortyapi.com/api/character/3"
+      "https://rickandmortyapi.com/api/character/" + idparam
     );
     const datainfo = repuesta.data;
     const { id, name, gender, image } = datainfo;
@@ -21,6 +16,7 @@ const useGetRickMorty = () => {
 
   return {
     rickMortyhook,
+    getpersonajeRM,
   };
 };
 export default useGetRickMorty;

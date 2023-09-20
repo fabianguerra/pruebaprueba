@@ -4,7 +4,7 @@ import axios from "axios";
 
 const useGetPokemonId = () => {
   const [pokemon, setPokemon] = useState<PokemonResponse>();
-
+  
   useEffect(() => {
     getCharizard();
   }, []);

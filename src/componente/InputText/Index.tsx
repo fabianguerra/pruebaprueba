@@ -1,8 +1,10 @@
 import { useFormContext } from "react-hook-form";
 
 interface IPropsItems {
-  title: string;
-  name: string;
+  type?:string,
+  title?: string;
+  name?: string;
+  
 }
 const InputText = (props: IPropsItems) => {
   const { register } = useFormContext();

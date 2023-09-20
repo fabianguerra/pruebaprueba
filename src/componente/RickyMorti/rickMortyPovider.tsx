@@ -4,14 +4,17 @@ import useGetRickMorty from "./hooks/useRickMorty";
 
 export interface IRickMortyContext {
   rickmortyProvider: RMReponse | undefined;
+  getIdPErsonaje:(id:string) => void;
+
 }
 const RickandContext = createContext({});
 
 export const RickMortyProvider = ({ children }: { children: ReactNode }) => {
-  const { rickMortyhook } = useGetRickMorty();
+  const { rickMortyhook, getpersonajeRM } = useGetRickMorty();
 
   const storage: IRickMortyContext = {
     rickmortyProvider: rickMortyhook,
+    getIdPErsonaje:getpersonajeRM,
   };
 
   return (

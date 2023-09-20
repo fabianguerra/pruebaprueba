@@ -4,3 +4,7 @@ export interface RMReponse{
     gender:string,
     image:string
 }
+
+export interface RMRequest{
+    id:string
+}
