@@ -6,9 +6,9 @@ import { ProductRequest } from "./Domain/proRequest";
 
 function ProducPage() {
   const initialStateForm: ProductRequest = {
-    IdCategoria:0,
-    NombreCategoria: "",
-    Descripcion: ""
+    idCategoria:0,
+    nombreCategoria: "",
+    descripcion: ""
   };
 
   const methods = useForm<ProductRequest>({
@@ -20,7 +20,6 @@ function ProducPage() {
     <>
       <FormProvider {...methods}>
         <div className="border text-center p-2 gap-2 justify-start bg-white">
-          PRODUCTO
           <ProductForm />
           <ProductList />
         </div>

@@ -1,35 +1,13 @@
-import { FC, useEffect, useState } from "react";
-import axios from "axios";
+import { FC, useContext, useState } from "react";
+
 import { ProductRequest } from "../Domain/proRequest";
+import ProductosContext, { IProductosContext } from "../ProductoProvider";
 
 export const ProductList: FC = () => {
-  const [productos, setProductos] = useState<ProductRequest[]>([]);
-
-
-  const obtenerDatos = async () => {
-
-    const respuesta = await axios.get("http://localhost:5091/tienda-ropa/obtener-todas-las-categorias");
-    setProductos(respuesta.data);
-    console.log(respuesta.data)
-    debugger;
-  };
-
-  // useEffect(() => {
-  //   obtenerDatos();
-  // }, []);
+  const { productosList } = useContext(ProductosContext) as IProductosContext;
 
   return (
-
-
     <div className="mt-8 flex flex-col">
-        <button
-          title="boton"
-          className="border  rounded-xl p-2 m-2 bg-blue-400"
-          onClick={obtenerDatos}
-        >
-          Consultar
-        </button>
-
       <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
           <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
@@ -52,16 +30,17 @@ export const ProductList: FC = () => {
               </thead>
 
               <tbody className="divide-y divide-gray-200 bg-white">
-                {productos.map((e: ProductRequest, key: number) => (
-                  <tr key={key}>
-                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                      {e.nombreCategoria}
-                    </td>
-                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                      {e.descripcion}
-                    </td>
-                  </tr>
-                ))}
+                {productosList &&
+                  productosList.map((e: ProductRequest, key: number) => (
+                    <tr key={key}>
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                        {e.nombreCategoria}
+                      </td>
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                        {e.descripcion}
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
