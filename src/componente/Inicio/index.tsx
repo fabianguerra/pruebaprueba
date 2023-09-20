@@ -3,17 +3,27 @@ import { Link } from "react-router-dom";
 function Inicio() {
   return (
     <div className="flex  relative">
-      <div className="bg-blue-700 w-auto grid grid-cols-1 h-screen">
+      <div className="bg-blue-300 w-auto grid grid-cols-1 h-screen">
         <Link to="/">Inicio</Link>
-        <Link to="/contador" className="mx-2">contador</Link>
-        <Link to="/pagina2" className="mx-2">PAGINA2</Link>
-        
-        <Link to="/UserFormularioR" className="mx-2">UserFormulario</Link>
-        <Link to="/ProducFroms" className="mx-2">PRODUCTO</Link>
+        <Link to="/Pokemon" className="mx-2">
+          POKEMON
+        </Link>
+        <Link to="/contador" className="mx-2">
+          CONTADOR
+        </Link>
+        <Link to="/pagina2" className="mx-2">
+          PAGINA2
+        </Link>
+        <Link to="/Usuario" className="mx-2">
+          USUARIOS
+        </Link>
+        <Link to="/ProducFroms" className="mx-2">
+          PRODUCTO
+        </Link>
       </div>
 
       <div className="flex flex-col h-screen flex-1 overflow-auto duration-200 transition-colors relative ">
-        <header className="h-16 bg-red-700">
+        <header className="h-16 bg-gray-300">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
