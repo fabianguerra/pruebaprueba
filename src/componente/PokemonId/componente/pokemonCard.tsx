@@ -1,23 +1,25 @@
 import { FC, useContext } from "react";
 import PokemonContext, { IPokemonContext } from "../pokemonProvider";
+import { PokemonResponse2 } from "../domain/pokemonRequest";
 
 export const PokemonCard: FC = () => {
   const { pokemon } = useContext(PokemonContext) as IPokemonContext;
   
-    return (  
+//<img className="m-auto" src={pokemon?.sprites} /* QUEMADA */ alt="" />
+  return (
     <>
-      <div className="mt-5">
+    {pokemon!.length > 0 ? (pokemon?.map((e:PokemonResponse2, key: number  ) =>(
+      <div className="mt-5 " key={key}>
         <div className=" text-center rounded-lg ml-8 cente bg-black border-4 border-red-600 w-52 py-16 ">
-          <h2 className="text-white"> Nombre: {pokemon?.name} </h2>
-          <p className="text-white"> Id: {pokemon?.id} </p>
-          <p className="text-white">Peso: {pokemon?.weight} </p>
-          {/*<p className="text-white">Peso: {pokemon?.sprites} </p>*/}
-          <img className="m-auto"
-            src= {pokemon?.sprites} /* QUEMADA */
-            alt=""
-          />
+          
+          <p className="text-white"> Nombre: {e!.name} </p>
+          
         </div>
       </div>
+      ))) : ( <tr>
+        <td colSpan={3}>No hay POKEMON disponibles.</td>
+      </tr>)}
+      
     </>
   );
 };

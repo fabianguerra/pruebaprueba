@@ -4,3 +4,7 @@ export interface PokemonResponse {
   sprites: string;
   weight: number;
 }
+export interface PokemonResponse2 {
+  name:string,
+  
+}

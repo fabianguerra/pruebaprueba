@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
-import { PokemonResponse } from "../domain/pokemonRequest";
+import { PokemonResponse, PokemonResponse2 } from "../domain/pokemonRequest";
 import axios from "axios";
 
 const useGetPokemonId = () => {
-  const [pokemon, setPokemon] = useState<PokemonResponse>();
+  const [pokemon2, setPokemon] = useState<PokemonResponse2[]>([]);
   
   useEffect(() => {
     getCharizard();
   }, []);
 
+  // https://pokeapi.co/api/v2/pokemon?offset=0&limit=5
   const getCharizard = async () => {
-    const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon/6");
+    const respuesta = await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=9");
     const datainfo = respuesta.data;
-    const {id, name,sprites, weight} = datainfo;
-    const imagen = sprites.front_shiny;
-    setPokemon({id, name, weight,sprites:imagen});
-  
+    setPokemon(datainfo.results);
   };
 
   return {
-    pokemon,
+    pokemon2,
   };
 };
 

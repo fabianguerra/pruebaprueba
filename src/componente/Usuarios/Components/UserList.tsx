@@ -9,14 +9,16 @@ import UsuariosContext, { IUsuariosContext } from "../UsuariosProvider";
 export const UserList: FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { usuariosList,deleteU } = useContext(UsuariosContext) as IUsuariosContext;
+  const { usuariosList, deleteU } = useContext(
+    UsuariosContext
+  ) as IUsuariosContext;
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
 
   const handlerDelete = async (id: string) => {
-    console.log(id+"ID eliminar");
+    console.log(id + "ID eliminar");
     deleteU(id);
   };
 
@@ -122,7 +124,7 @@ export const UserList: FC = () => {
               </tbody>
             </table>
           </div>
-{/* 
+          {/* 
           <NietoUsuario />
           <HijoUsuario /> */}
         </div>

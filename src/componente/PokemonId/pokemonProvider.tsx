@@ -1,18 +1,17 @@
 import { createContext, ReactNode } from "react";
-import { PokemonResponse } from "./domain/pokemonRequest";
+import { PokemonResponse2 } from "./domain/pokemonRequest";
 import useGetPokemonId from "./hooks/usePokemonId";
 
 export interface IPokemonContext {
-  pokemon: PokemonResponse | undefined;
+  pokemon: PokemonResponse2[];
 }
 
 const PokemonContext = createContext({});
 
 export const PokemonProvider = ({ children }: { children: ReactNode }) => {
-  const { pokemon } = useGetPokemonId();
-
+  const { pokemon2 } = useGetPokemonId();
   const storage: IPokemonContext = {
-    pokemon,
+    pokemon:pokemon2,
   };
 
   return (

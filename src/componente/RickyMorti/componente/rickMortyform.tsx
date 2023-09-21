@@ -1,9 +1,10 @@
 import { FC, useContext } from "react";
 import InputText from "../../InputText/Index";
 
-import { useForm, useFormContext } from "react-hook-form";
+
 import { RMRequest } from "../domain/RickMortyRequest";
 import RickandContext, { IRickMortyContext } from "../rickMortyPovider";
+import { useFormContext } from "react-hook-form";
 
 export const RickMortyForm: FC = () => {
   const { getValues } = useFormContext<RMRequest>();
