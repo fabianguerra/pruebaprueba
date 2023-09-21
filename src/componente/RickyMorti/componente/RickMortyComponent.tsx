@@ -3,6 +3,7 @@ import { FC, useContext } from "react";
 import RickandContext, { IRickMortyContext } from "../rickMortyPovider";
 
 import { RickMortyForm } from "./rickMortyform";
+import { RickMortyBoton } from "./RickMortybbutton";
 
 export const RickMortyPresent: FC = () => {
   const { rickmortyProvider } = useContext(RickandContext) as IRickMortyContext;
@@ -25,9 +26,12 @@ export const RickMortyPresent: FC = () => {
             /* QUEMADA */ alt=""
           />
         </div>
-        <div className="mx-2">
-          
-          <RickMortyForm />
+        <div className="flex mx-2">
+           <RickMortyForm />
+           <div className="border border-red-600">
+           <RickMortyBoton/>
+           </div>
+            
         </div>
       </div>
     </>

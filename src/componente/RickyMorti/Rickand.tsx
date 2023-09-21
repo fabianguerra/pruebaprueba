@@ -18,6 +18,7 @@ export const Rickand: FC = () => {
         <div>
           <h2>RickMorty page</h2>
           <RickMortyPresent />
+          
         </div>
       </FormProvider>
     </>
