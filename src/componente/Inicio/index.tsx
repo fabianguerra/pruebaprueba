@@ -11,6 +11,9 @@ function Inicio() {
         <Link to="/RickMorty" className="mx-2">
         RickMorty
         </Link>
+        <Link to="/Version2RickMorty" className="mx-2">
+        VERSION2RickMorty
+        </Link>
         <Link to="/contador" className="mx-2">
           CONTADOR
         </Link>

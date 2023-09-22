@@ -15,8 +15,8 @@ export const RickMortyPresent: FC = () => {
           <h2 className="text-white">id: {rickmortyProvider?.id} </h2>
           <p className="text-white"> Nombre: {rickmortyProvider?.name} </p>
           <p className="text-white">
-            Genero:{" "}
-            {rickmortyProvider?.gender === "Male" ? "Masculino" : "Femenino"}{" "}
+            Genero:
+            {rickmortyProvider?.gender === "Male" ? "Masculino" : "Femenino"}
           </p>
           {/*<p className="text-white">Peso: {pokemon?.sprites} </p>*/}
 
@@ -27,11 +27,10 @@ export const RickMortyPresent: FC = () => {
           />
         </div>
         <div className="flex mx-2">
-           <RickMortyForm />
-           <div className="border border-red-600">
-           <RickMortyBoton/>
-           </div>
-            
+          <RickMortyForm />
+          <div className="border border-red-600">
+            <RickMortyBoton />
+          </div>
         </div>
       </div>
     </>
