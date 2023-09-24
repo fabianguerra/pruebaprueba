@@ -2,10 +2,11 @@ import { useState } from "react";
 
 import axios from "axios";
 import { ProductRequest } from "../Domain/proRequest";
+import { useFormContext } from "react-hook-form";
 
 const useProductos = () => {
   const [productos, setProductos] = useState<ProductRequest[]>([]);
-
+  const { getValues } = useFormContext<ProductRequest>();
   const getProductos = async () => {
     const respuesta = await axios.get(
       "http://localhost:5091/tienda-ropa/obtener-todas-las-categorias"
@@ -24,10 +25,19 @@ const useProductos = () => {
     }
   };
 
+  const handleAgregar = async () => {
+    debugger;
+    const params: ProductRequest = { ...getValues() };
+    await axios.post("http://localhost:5091/tienda-ropa/agregar-categoria", {
+      ...params,
+    });
+  };
+
   return {
     productos,
     getProductos,
     handlerDelete,
+    handleAgregar,
   };
 };
 
