@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 
-import { ProductForm } from "./Componentes/producForms";
+import { ProductForm } from "./Componentes/ProductForm";
 import { ProductList } from "./Componentes/productList";
 import { ProductRequest } from "./Domain/proRequest";
 

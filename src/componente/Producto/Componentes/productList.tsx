@@ -4,7 +4,7 @@ import { ProductRequest } from "../Domain/proRequest";
 import ProductosContext, { IProductosContext } from "../ProductoProvider";
 
 export const ProductList: FC = () => {
-  const { productosList } = useContext(ProductosContext) as IProductosContext;
+  const { productosList,DeleteProductos } = useContext(ProductosContext) as IProductosContext;
 
   return (
     <div className="mt-8 flex flex-col">
@@ -30,17 +30,25 @@ export const ProductList: FC = () => {
               </thead>
 
               <tbody className="divide-y divide-gray-200 bg-white">
-                {productosList &&
-                  productosList.map((e: ProductRequest, key: number) => (
-                    <tr key={key}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {e.nombreCategoria}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {e.descripcion}
-                      </td>
-                    </tr>
-                  ))}
+                {productosList.map((e: ProductRequest, key: number) => (
+                  <tr key={key}>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                      {e.nombreCategoria}
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {e.descripcion}
+                    </td>
+
+                    <td>
+                    <button
+                     onClick={() => DeleteProductos(e.idCategoria)}
+                    >
+                      delete
+                    </button>
+                    </td>
+                  </tr>
+                ))}
+                
               </tbody>
             </table>
           </div>
