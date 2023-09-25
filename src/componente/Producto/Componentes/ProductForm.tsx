@@ -15,6 +15,7 @@ export const ProductForm: FC = () => {
 
   const handlerAgregarr = () => {
     AgregarProductos();
+    setIsOpen(!isOpen)
   };
 
   const [isOpen, setIsOpen] = useState(false);

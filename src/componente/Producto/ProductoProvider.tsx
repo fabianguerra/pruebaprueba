@@ -16,6 +16,7 @@ export interface IProductosContext {
   searchProductos: () => void;
   DeleteProductos: (idCategoria: number) => Promise<void>;
   AgregarProductos: () => void;
+  EditarProductos: () => void;
 }
 
 const ProductosContext = createContext({});
@@ -23,7 +24,7 @@ const ProductosContext = createContext({});
 export const ProductosProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setIsLoading] = useState(true);
 
-  const { getProductos, productos, handlerDelete,handleAgregar } = useProductos();
+  const { getProductos, productos, handlerDelete,handleAgregar,handleEditar } = useProductos();
 
   const storage: IProductosContext = {
     loading: loading,
@@ -32,6 +33,7 @@ export const ProductosProvider = ({ children }: { children: ReactNode }) => {
     searchProductos: getProductos,
     DeleteProductos: handlerDelete,
     AgregarProductos:handleAgregar,
+    EditarProductos:handleEditar,
   };
 
   return (

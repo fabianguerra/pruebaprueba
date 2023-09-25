@@ -2,9 +2,20 @@ import { FC, useContext, useState } from "react";
 
 import { ProductRequest } from "../Domain/proRequest";
 import ProductosContext, { IProductosContext } from "../ProductoProvider";
+import ModalComponent from "../modal/modal";
+import InputText from "../../InputText/Index";
 
 export const ProductList: FC = () => {
-  const { productosList,DeleteProductos } = useContext(ProductosContext) as IProductosContext;
+  const { productosList, DeleteProductos, EditarProductos } = useContext(
+    ProductosContext
+  ) as IProductosContext;
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleModal = () => {
+    setIsOpen(!isOpen);
+  };
+  s
 
   return (
     <div className="mt-8 flex flex-col">
@@ -39,21 +50,38 @@ export const ProductList: FC = () => {
                       {e.descripcion}
                     </td>
 
-                    <td>
-                    <button
-                     onClick={() => DeleteProductos(e.idCategoria)}
-                    >
-                      delete
-                    </button>
+                    <td className="flex items-center justify-center space-x-5">
+                      <button onClick={() => DeleteProductos(e.idCategoria)}>
+                        delete
+                      </button>
+                      <button onClick={toggleModal}>editar</button>
                     </td>
                   </tr>
                 ))}
-                
               </tbody>
             </table>
           </div>
         </div>
       </div>
+      <ModalComponent
+        isOpen={isOpen}
+        onClose={toggleModal}
+        title={"Modal Static"}
+      >
+        <div>
+        <InputText title="ID" name="idCategoria" />
+          <InputText title="Nombre Categoria" name="nombreCategoria" />
+          <InputText title="DESCRIPCION" name="descripcion" />
+
+          <button
+            title="boton"
+            className="border  rounded-xl p-2 m-2 bg-blue-400"
+            onClick={EditarProductos}
+          >
+            EDITAR
+          </button>
+        </div>
+      </ModalComponent>
     </div>
   );
 };

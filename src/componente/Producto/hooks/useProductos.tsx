@@ -32,12 +32,20 @@ const useProductos = () => {
       ...params,
     });
   };
+  const handleEditar = async () => {
+    debugger;
+    const params: ProductRequest = { ...getValues() };
+    await axios.put("http://localhost:5091/tienda-ropa/editar-categoria", {
+      ...params,
+    });
+  };
 
   return {
     productos,
     getProductos,
     handlerDelete,
     handleAgregar,
+    handleEditar,
   };
 };
 
